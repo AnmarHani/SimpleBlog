@@ -3,7 +3,7 @@
     - ``backend folder`` ~~frontend~~
     - ``frontend folder`` ~~new changes~~
 2. BACKEND AND FRONTEND FILES ARE HOSTED ON HEROKU.
-3. WEBSITE URL (FRONTEND): 
+3. WEBSITE URL (FRONTEND): https://reactt-frontend-blog.herokuapp.com/
 4. API URL (BACKEND): ***CONTACT ME TO GET THE API URL***.
 5. ~~FRONTEND AND BACKEND FOLDERS INCLUDE README.md FILE, PLEASE READ IT~~... ***ON PROGRESS***
 6. THIS WEBSITE DOES NOT FOCUS ON THE DESIGN (CSS), ONLY FUNCTIONALITY. 
