@@ -1,12 +1,13 @@
 import Axios from 'axios';
 // import { useState } from 'react';
-
+import {useDispatch, useSelector} from "react-redux"
+import {registerAsync, loginAsync, logoutAsync} from "./redux/features/userSlice"
 // const [Token, setToken] = useState('')
+
+
 const axios = Axios.create({
-  baseURL: "http://localhost:8000/api",
-  headers : {
-    Authorization: `Token b91b9180ef04c15eda88b2f3ddf202b180509e00`
-  }
+  baseURL: "HIDDEN"
 })
+
 
 export default axios

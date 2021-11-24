@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
 import axios from '../../axios';
 
 export const getBlogsAsync = createAsyncThunk( //action contains a type and a payload
     "blogs/getBlogs", //type name
-    async () => { //payload function
-        const response = await axios.get(`/Blog-List/1/`)
+    async (page) => { //payload function
+        const response = await axios.get(`/Blog-List/${page}/`)
         if(response){
             const blogsData = response.data.data //payload data
             return {blogsData}
@@ -22,15 +23,6 @@ export const createBlogAsync = createAsyncThunk( //action contains a type and a 
     }
 )
 
-// export const updateBlogAsync = createAsyncThunk( //action contains a type and a payload
-//     "blogs/createBlog", //type name
-//     async (data) => { //payload function
-//         const response = await axios.post(`/Blog-Create/`, data)
-//         if (response){
-//         return data
-//         }
-//     }
-// )
 
 export const deleteBlogAsync = createAsyncThunk( //action contains a type and a payload
     "blogs/deleteBlog", //type name

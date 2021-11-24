@@ -6,6 +6,7 @@ urlpatterns = [
   path('Register/', views.Register, name="Register"),
   path('Login/', obtain_auth_token, name="Login"),
   path('Logout/',views.Logout,name='logout'),
+  path('GetUser/<str:token>/',views.GetUser,name='GetUser'),
 
   path('', include('Blogs.urls')),
 ]

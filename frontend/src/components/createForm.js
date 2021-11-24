@@ -2,10 +2,13 @@ import React, {useState, useEffect} from 'react';
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux';
 import { createBlogAsync } from '../redux/features/blogSlice';
+import { Redirect } from 'react-router';
 
 const CreateForm = () => {
 
     const dispatch = useDispatch()
+
+    const [created, setCreated] = useState(false)
 
     const {register, watch ,handleSubmit, errors} = useForm({
         title: '',
@@ -18,7 +21,7 @@ const CreateForm = () => {
         // console.log(data)
         // console.log(response.data)
         dispatch(createBlogAsync(data))
-        window.location.reload();
+        setCreated(true)
     }
 
 
@@ -31,6 +34,7 @@ const CreateForm = () => {
                 <br />
                 <input type="submit"/>
             </form>
+            {created && <Redirect to="/"/>}
         </>
     )
 }

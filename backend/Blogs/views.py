@@ -66,7 +66,10 @@ def BlogList(request, page_num):
   # data['title'] = serializer.data['title']
   # data['description'] = serializer.data['description']
   # data['likes'] = GetBlog.count_like()
-  return Response(serializer.data)
+  return Response({
+    'data':serializer.data,
+    'page_num': p.num_pages    
+  })
 #---------------------------------------------------#
                     #GET One
 @api_view(['GET'])
@@ -94,9 +97,10 @@ def BlogDetail(request, id):
                     #POST
 @api_view(['POST'])
 #Only User Can
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 
 def BlogCreate(request):
+  print(request.user)
   serializer = BlogSerializer(data={
     'author': request.user.id,
     'title' : request.data['title'],

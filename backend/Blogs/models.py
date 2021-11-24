@@ -4,7 +4,7 @@ from Account.models import MyUser
 class Blog(models.Model):
   title = models.CharField(max_length=200)
   description = models.TextField(max_length=500)
-  likes = models.ManyToManyField(MyUser,related_name='Blog_likes')
+  likes = models.ManyToManyField(MyUser,related_name='Blog_likes', blank=True)
   author = models.ForeignKey(MyUser, on_delete=models.CASCADE)
   def count_like(self):
     return self.likes.count() 

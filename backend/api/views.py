@@ -19,10 +19,9 @@ from django.contrib.auth import logout
                       #User#
 
                     #REGISTER
+@permission_classes((AllowAny,))
 @api_view(['POST'])
 #Guest Can See
-@permission_classes([AllowAny])
-
 def Register(request):
 
   serializer = RegisterSerializer(data=request.data)
@@ -31,15 +30,18 @@ def Register(request):
 
   }
   
+
   if serializer.is_valid():
     myUser = serializer.save()
-    data['response'] = 'Registered Succesfully!'
     data['username'] = myUser.username
+    data['user_id'] = myUser.id
     token = Token.objects.get(user=myUser).key
     user = MyUser.objects.filter(username=myUser.username).first()
     data['token'] = token
   else:
     data = serializer.errors
+  
+  print(serializer)
   
   return Response(data)
 
@@ -58,3 +60,15 @@ def Logout(request):
     logout(request)
 
     return Response('User Logged out successfully')
+
+#---------------------------------------------------#
+                      #GetUser
+@api_view(["GET"])
+@permission_classes([AllowAny])
+def GetUser(request, token):
+    data = {}
+    user = Token.objects.get(key=token).user
+    data["id"] = user.id
+    data["username"] = user.username
+    data["token"] = Token.objects.get(user=user).key
+    return Response(data)
