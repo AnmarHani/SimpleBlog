@@ -1,5 +1,5 @@
 # Name:
-- blogging web app
+- SimpleBlog
  
 # URL Demo:
 - NONE
